@@ -1,5 +1,6 @@
 *** Settings ***
 Resource    ../resources/keywords.robot
+Resource    ../resources/locator.robot
 Test Setup  Open SauceDemo
 Test Teardown    Close Browser
 
@@ -7,9 +8,9 @@ Test Teardown    Close Browser
 Login With Valid Credentials
     [Documentation]    Test login functionality with valid username and password.
     Login With Credentials    ${VALID_USER}    ${VALID_PASS}
-    Page Should Contain Element    class:inventory_list
+    Page Should Contain Element    ${inventory_list}
 
 Login With Invalid Credentials
     [Documentation]    Test login functionality with valid username and password.
     Login With Credentials    ${INVALID_USER}    ${INVALID_PASS}
-    Page Should Contain    Epic sadface
+    Page Should Contain    ${error_message}

@@ -1,6 +1,7 @@
 *** Settings ***
 Library    SeleniumLibrary
 Resource   variables.robot
+Resource   locator.robot
 
 *** Keywords ***
 Open SauceDemo
@@ -9,11 +10,17 @@ Open SauceDemo
 
 Login With Credentials
     [Arguments]    ${username}    ${password}
-    Input Text    id:user-name    ${username}
-    Input Text    id:password     ${password}
-    Click Button  id:login-button
+    Input Text    ${username_field}    ${username}
+    Input Text    ${password_field}     ${password}
+    Click Button  ${login_button}
 
 Logout From Application
-    Click Button    id:react-burger-menu-btn
-    wait Until Element Is Visible    id:logout_sidebar_link    timeout=5s
-    Click Link      id:logout_sidebar_link
+    Click Button    ${menu_button}
+    wait Until Element Is Visible    ${logout_link}    timeout=5s
+    Click Link      ${logout_link}
+
+Put Checkout
+    [Arguments]    ${first-name}    ${last-name}    ${postal-code}
+    Input Text      id:first-name    ${first-name}
+    Input Text      name:lastName     ${last-name}
+    Input Text      id:postal-code   ${postal-code}

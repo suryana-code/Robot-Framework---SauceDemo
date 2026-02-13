@@ -1,5 +1,6 @@
 *** Settings ***
 Resource    ../resources/keywords.robot
+Resource    ../resources/locator.robot
 Test Setup  Open SauceDemo
 Test Teardown    Close Browser
 
@@ -7,4 +8,4 @@ Test Teardown    Close Browser
 Logout Successfully
     Login With Credentials    ${VALID_USER}    ${VALID_PASS}
     Logout From Application
-    Page Should Contain Element    id:login-button
+    Page Should Contain Element    ${login_button}

@@ -1,29 +1,29 @@
 *** Settings ***
 Resource    ../resources/keywords.robot
+Resource    ../resources/variables.robot
+Resource    ../resources/locator.robot
 Test Setup  Open SauceDemo
 Test Teardown    Close Browser
 
 *** Test Cases ***
 Checkout With Empty Data
     Login With Credentials    ${VALID_USER}    ${VALID_PASS}
-    Click Button    id:add-to-cart-sauce-labs-backpack
-    Click Element   class:shopping_cart_link
-    Click Button    id:checkout
-    Click Button    id:continue
+    Click Button    ${add_to_cart_button}
+    Click Element   ${shopping_cart_link}
+    Click Button    ${checkout_button}
+    Click Button    ${continue_button}
     Page Should Contain    Error
 
 Successful Checkout
     # Set Selenium Speed    0.3s
     Login With Credentials    ${VALID_USER}    ${VALID_PASS}
-    Click Button    id:add-to-cart-sauce-labs-backpack
-    Click Element   class:shopping_cart_link
-    Click Button    id:checkout
-    wait Until Element Is Visible    id:continue    timeout=5s
-    Input Text      id:first-name    Test
-    Input Text      name:lastName     User
-    Input Text      id:postal-code   12345
-    Click Button    id:continue
-    wait Until Element Is Visible    id:finish    timeout=5s
-    Click Button    id:finish
-    wait Until Element Is Visible    class:complete-header    timeout=5s
+    Click Button    ${add_to_cart_button}
+    Click Element   ${shopping_cart_link}
+    Click Button    ${checkout_button}
+    wait Until Element Is Visible    ${continue_button}    timeout=5s
+    Put Checkout    ${first-Name}    ${last-Name}    ${postal-Code}
+    Click Button    ${continue_button}
+    wait Until Element Is Visible    ${finish_button}    timeout=5s
+    Click Button    ${finish_button}
+    wait Until Element Is Visible    ${complete_header}    timeout=5s
     Page Should Contain    Thank you for your order
