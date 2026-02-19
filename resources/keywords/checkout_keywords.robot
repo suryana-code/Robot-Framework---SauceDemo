@@ -18,5 +18,5 @@ Put Checkout
     Click Button    ${continue_button}
     wait Until Element Is Visible    ${finish_button}    timeout=5s
     Click Button    ${finish_button}
-    wait Until Element Is Visible    ${complete_header}    timeout=10s
+    wait Until Element Is Visible    ${complete_header}
     Page Should Contain    Thank you for your order
