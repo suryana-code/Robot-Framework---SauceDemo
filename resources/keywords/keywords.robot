@@ -7,5 +7,5 @@ Resource   ../locator.robot
 
 Logout From Application
     Click Button    ${menu_button}
-    wait Until Element Is Visible    ${logout_link}    timeout=5s
+    wait Until Element Is Visible    ${logout_link}
     Click Link      ${logout_link}

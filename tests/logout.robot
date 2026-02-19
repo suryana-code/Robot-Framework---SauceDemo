@@ -8,6 +8,7 @@ Test Teardown    Close Browser
 
 *** Test Cases ***
 Logout Successfully
+    [Documentation]    Verify that user can logout successfully
     Login With Credentials    ${VALID_USER}    ${VALID_PASS}
     Logout From Application
     Page Should Contain Element    ${login_button}
