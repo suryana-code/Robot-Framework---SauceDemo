@@ -1,27 +1,40 @@
-# Robot Framework Automation – SauceDemo
+# 🤖 Robot Framework - SauceDemo Automation
 
-Project ini berisi automation testing menggunakan **Robot Framework + SeleniumLibrary** untuk website **SauceDemo**.
-Dirancang agar **mudah dijalankan**, **stabil**, dan **siap digunakan di local maupun CI/CD**.
+Automation testing project for SauceDemo web application using Robot Framework and SeleniumLibrary.
 
----
+This project demonstrates:
 
-## Tech Stack
-
-- **Robot Framework**
-- **Python 3**
-- **SeleniumLibrary**
-- **Google Chrome & ChromeDriver**
+- Modular keyword design
+- Page-based resource separation
+- Tag-based test execution
+- Scalable folder structure
+- Clean and maintainable automation framework
 
 ---
 
-## Project Structure
+## 📌 Tech Stack
+
+- Robot Framework
+- SeleniumLibrary
+- Python 3.x
+- Chrome Browser
+
+---
+
+## 📂 Project Structure
 
 ```
 project-root/
 │
 ├── resources/
-│   ├── keywords.robot        # Reusable keywords (Open browser, login, logout, dll)
-│   ├── variables.robot       # Global variables (URL, credentials, browser)
+│   ├── keywords/
+│      ├── chart_keywords.robot
+│      ├── checkout_keywords.robot
+│      ├── keywords.robot
+│      ├── login_keywords.robot
+│   ├── variables/
+│      ├── global_variables.robot
+│   ├── locator.robot
 │
 ├── tests/
 │   ├── cart.robot            # Add to chat test cases
@@ -57,7 +70,7 @@ pip install robotframework-seleniumlibrary
 
 ### Browser & URL
 
-Di `resources/variables.robot`:
+Di `resources/variables/variables.robot`:
 
 ```robot
 *** Variables ***
@@ -87,6 +100,12 @@ robot tests/
 
 ```bash
 robot tests/login.robot
+```
+
+### Run test with Tag
+
+```bash
+robot -i [tag]
 ```
 
 ### Run headless dari terminal
@@ -135,10 +154,3 @@ Setelah test selesai, hasil dapat dilihat di:
 results/log.html
 results/report.html
 ```
-
----
-
-## Author
-
-QA Engineer
-Automation Testing – Robot Framework
