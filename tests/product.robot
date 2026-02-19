@@ -1,4 +1,5 @@
 *** Settings ***
+Test Tags    smoke
 Resource    ../resources/keywords.robot
 Resource    ../resources/locator.robot
 Test Setup    Open SauceDemo

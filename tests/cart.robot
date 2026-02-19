@@ -1,13 +1,13 @@
 *** Settings ***
-Resource    ../resources/keywords.robot
+Test Tags    regression
+Resource    ../resources/keywords/login_keywords.robot
+Resource    ../resources/keywords/chart_keywords.robot
 Resource    ../resources/locator.robot
 Test Setup  Open SauceDemo
 Test Teardown    Close Browser
 
 *** Test Cases ***
 Add Product To Cart
+    [Documentation]    This test case will verify that user can add product to cart successfully
     Login With Credentials    ${VALID_USER}    ${VALID_PASS}
-    Click Button    ${added_to_cart_button}
-    Element Text Should Be    class:shopping_cart_badge    1
-    Click Element    ${shopping_cart_link}
-    Page Should Contain    Sauce Labs Backpack
+    Add to Chart

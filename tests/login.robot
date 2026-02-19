@@ -1,5 +1,6 @@
 *** Settings ***
-Resource    ../resources/keywords.robot
+Test Tags    regression
+Resource    ../resources/keywords/login_keywords.robot
 Resource    ../resources/locator.robot
 Test Setup  Open SauceDemo
 Test Teardown    Close Browser
